@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title> CSS Stylish Login Page Example</title>
+    <meta name="author" content="Codeconvey" />
+    
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <!-- Stylish Login Page CSS -->
+   
+	
+</head>
+<body>
+		
+<div class="content">
+
+
+</div>
+
+<header class="ScriptHeader">
+    <div class="rt-container">
+    	<div class="col-rt-12">
+        	
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="rt-container">
+          <div class="col-rt-12">
+              <div class="Scriptcontent">
+              
+              <!-- Stylish Login Page Start -->
+                <form #Registerform="ngForm" (ngSubmit)="registerUser()" class="codehim-form">
+                    <small>{{msg}}</small>
+                    <!-- <small [class.text-danger]="msg ==500">{{msg}}</small> -->
+        <div class="form-title">
+            <div class="user-icon gr-bg">
+            <i class="fa fa-user"></i>
+            </div>
+     <h2>Register to AJira</h2>
+            </div>
+            <div>
+                <label  for="firstName"><i class="fa fa-user-circle"></i>Firstname</label>
+        <input  type="text" class="form-control"  name="firstName" required placeholder="Enter your name"
+        [(ngModel)]="user.firstName" #firstName="ngModel" [class.is-invalid]="firstName.invalid && firstName.touched" >
+        <small class="text-danger" [class.d-none]="firstName.valid ||firstName.untouched">FirstName  is required field</small>
+        
+            </div>
+
+            <div>
+                <label  for="lastName"><i class="fa fa-user-circle"></i>Lastname</label>
+        <input  type="text" class="form-control"  name="lastName" required placeholder="Enter your FirstName"
+        [(ngModel)]="user.lastName" #lastName="ngModel" [class.is-invalid]="lastName.invalid && lastName.touched" >
+        <small class="text-danger" [class.d-none]="lastName.valid ||lastName.untouched">LastName  is required field</small>
+        
+            </div>
+        <div>
+            <label for="email"><i class="fa fa-envelope"></i> Email:</label>
+                <input type="email"  class="form-control" name="email"  
+                placeholder="Enter your email adress" [(ngModel)]="user.emailId"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"   #email="ngModel"  
+                [class.is-invalid]="email.invalid && email.touched"
+                required>
+                <div>
+                    <!-- <small *ngIf="email.errors" class="text-danger" >Email Id is required</small> -->
+
+                    <small class="text-danger" *ngIf="email.errors?.['required']">Email is a required field</small>
+                    <small class="text-danger" *ngIf="email.errors?.['pattern']">Enter the valid email</small>
+                </div>
+                </div>
+                <div>
+                    <label for="pass"><i class="fa fa-lock"></i> Password:</label>
+                    <input  type="password" class="form-control"  name="password" required placeholder="Enter your password"
+                    [(ngModel)]="user.password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched" >
+                    <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required field</small>
+                   
+                </div>
+       <div>
+           <label>Confirm Password</label>
+           <input type="password" class="form-control" placeholder="Confirm password" name="cpassword" #cpassword="ngModel"
+           (ngModel)="user.password" required [class.is-invalid]="cpassword.invalid && cpassword.touched"
+           >
+           <small class="text-danger" [class.d-none]="(cpassword.value == password.value) || cpassword.untouched">Password and confirm password not matching</small>
+       </div>
+        <button [disabled]="Registerform.form.invalid" routerLink="/login" type="submit" (click)=" registerUser()" class="btn btn-primary btn-lg btn-block">Register</button>
+
+       <a class="float-right btextual" routerLink="/login">Existing user ? Login here</a>
+       <!-- <a routerLink="/register">New User? Register</a> -->
+    
+    </form>
+            
+    		
+    		</div>
+		</div>
+    </div>
+</section>
+     
+
+
+    <!-- Analytics -->
+
+	</body>
+</html>

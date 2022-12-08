@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title> CSS Stylish Login Page Example</title>
+    <meta name="author" content="Codeconvey" />
+    
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <!-- Stylish Login Page CSS -->
+   
+	
+</head>
+<body>
+		
+<div class="content">
+
+
+</div>
+
+<header class="ScriptHeader">
+    <div class="rt-container">
+    	<div class="col-rt-12">
+        	
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="rt-container">
+          <div class="col-rt-12">
+              <div class="Scriptcontent">
+              
+            
+                <form #loginform="ngForm" (ngSubmit)="loginUser()" class="codehim-form">
+                    <small>{{msg}}</small>
+               
+        <div class="form-title">
+            <div class="user-icon gr-bg">
+            <i class="fa fa-user"></i>
+            </div>
+     <h2>Login to AJira</h2>
+            </div>
+            <div>
+    <label for="email"><i class="fa fa-envelope"></i> Email:</label>
+        <input type="email"  class="form-control" name="email"  
+        placeholder="Enter your email adress" [(ngModel)]="user.emailId" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"   #email="ngModel"  
+        [class.is-invalid]="email.invalid && email.touched"
+        >
+        <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email Id is required</small>
+        <div *ngif="email.errors && (email.invalid && email.touched)">
+            <small class="text-danger" *ngif="email.errors.required">Email is a required field</small>
+            <small class="text-danger" *ngIf="email.errors?.['pattern']">Enter the valid email</small>
+        </div>
+        </div>
+        <label for="pass"><i class="fa fa-lock"></i> Password:</label>
+        <input  type="password" class="form-control"  name="password" required placeholder="Enter your password"
+        [(ngModel)]="user.password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched" >
+        <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required field</small>
+        <button [disabled]= "loginform.form.invalid" type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+         <div class="register">
+       <a routerLink="/register">New User? Register</a>
+      
+       </div>
+    </form>
+    
+            
+    		
+    		</div>
+		</div>
+    </div>
+</section>
+     
+
+
+  
+
+	</body>
+</html>

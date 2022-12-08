@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Nunuto:400,700|Lato:400,800,900');
+html,body{
+    height: 100%;
+    background-image: url("./assets/background.svg");
+    font-family: "Nunito", sans-serif ;
+    border-color: transparent;
+    border-width: 2px;
+}
+html{
+    background-image: url('./assets/background.svg');
+    background-size: cover;
+    overflow-y: auto !important;
+}
