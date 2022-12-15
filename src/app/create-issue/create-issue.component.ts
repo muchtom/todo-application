@@ -21,7 +21,7 @@ export class CreateIssueComponent implements OnInit {
    constructor( private service:RegistrationService, private  notification : NzNotificationService, private router: Router){}
    ngOnInit() {
     this.getAllUsers();
-    // this.submit();
+
    }
 
    onChanges(){}
@@ -40,7 +40,7 @@ export class CreateIssueComponent implements OnInit {
       (data)=>{
        this.AllUsers= data
       });
-       console.log(this.AllUsers);
+      
        
       }
     

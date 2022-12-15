@@ -14,7 +14,17 @@ export class RegistrationService {
   constructor(private _http: HttpClient) { }
 
   public getFromUrl(url: string): Observable<any> {
-    return this._http.get("http://192.168.10.45:8083/v1/tasks?page=0&size=1&sort=string")
+    return this._http.get("http://192.168.10.45:8083/v1/tasks/todo?page=0&size=1&sort=string")
+      .pipe(catchError(() => empty()));
+  }
+
+  public getFromUrlProgress(url: string): Observable<any> {
+    return this._http.get("http://192.168.10.45:8083/v1/tasks/inprogress?page=0&size=1&sort=string")
+      .pipe(catchError(() => empty()));
+  }
+
+  public getFromUrlDone(url: string): Observable<any> {
+    return this._http.get("http://192.168.10.45:8083/v1/tasks/done?page=0&size=1&sort=string")
       .pipe(catchError(() => empty()));
   }
 
@@ -37,6 +47,11 @@ export class RegistrationService {
   createIssue(issue: Issue):Observable<any>{
      return this._http.post<any>("http://192.168.10.45:8083/v1/tasks/create",issue);
   }
+  updateIssue(issue: Issue, id:number):Observable<Object>{
+    return this._http.put<any>(`http://192.168.10.45:8083/v1/tasks/update/${id}`, issue)
+  }
+
+
 
 
   public getPaginated(request?: PageRequest, url?: string): Observable<PageResult<any>> {
@@ -45,8 +60,25 @@ export class RegistrationService {
     return this.getFromUrl(url);
   }
 
+  public getPaginatedInProgress(request?: PageRequest, url?: string): Observable<PageResult<any>> {
+    if (!url) url = '';
+    url += `${PAGEPARAMS(request)}`;
+    return this.getFromUrlProgress(url);
+  }
+  public getPaginatedDone(request?: PageRequest, url?: string): Observable<PageResult<any>> {
+    if (!url) url = '';
+    url += `${PAGEPARAMS(request)}`;
+    return this.getFromUrlDone(url);
+  }
+
   getIssueById(id:number):Observable<Issue>{
     return this._http.get<Issue>(`http://192.168.10.45:8083/v1/tasks/task/${id}`);
+
+  }
+
+  deleteIssueById(id:number):Observable<Object>{
+
+    return this._http.delete(`http://192.168.10.45:8083/v1/tasks/delete/${id}`);
 
   }
 }

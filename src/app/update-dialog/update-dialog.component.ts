@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder,Validators, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Issue } from '../issue';
 import { RegistrationService } from '../registration.service';
 
@@ -19,7 +20,9 @@ export class UpdateDialogComponent  implements OnInit{
 
   constructor(private service: RegistrationService, private _http: HttpClient, 
     private route:ActivatedRoute,
-    private formBuilder: FormBuilder ){
+    private formBuilder: FormBuilder,
+    private notification : NzNotificationService,
+    private router : Router ){
 
   }
 
@@ -28,7 +31,7 @@ export class UpdateDialogComponent  implements OnInit{
     this.id = this.route.snapshot.params['id'];
     this.service.getIssueById(this.id).subscribe(data =>{
       this.issue = data;
-      console.log(data);
+      console.log(data)
     })
    this.getAllstatuses();
    this.getAllUsers();
@@ -39,22 +42,25 @@ export class UpdateDialogComponent  implements OnInit{
     assigneeId: ['',Validators.required]
    })
   }
+ 
   submit(){
-
-  }
-
-  updateToDoTask(id: number){
-    this._http.put("http://192.168.10.45:8083/v1/tasks/update/1040?id=0&status=TO_DO&description=string&assigneeId=0&pinned=true", id).subscribe(res=>{
-      console.log(res);
-      
-      
+    //  this.getAllUsers();
+    this.service.updateIssue(this.issue, this.id).subscribe(data =>{
+      console.log(data);
     })
-    
+    // this.service.updateIssue(this.id).subscribe(res=>{
+    //  this.notification.success("Issue ","updated successfully");
+    //  console.log(res);
+    //  this.router.navigate(['/board']);
+    // }, err=>{
+    //  this.notification.error("error occured","when creating an issue")
+    // })
   }
+
 
   getAllstatuses(){
 this._http.get("http://192.168.10.45:8083/v1/tasks/statuses").subscribe(res=>{
-  this.allStatuses= res
+  this.allStatuses= res;
 })
   }
 
