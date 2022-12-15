@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AllIssuesComponent } from './all-issues/all-issues.component';
 import { CreateIssueComponent } from './create-issue/create-issue.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainViewComponent } from './pages/main-view/main-view.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
+import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
 
 const routes: Routes = [
  
@@ -26,6 +28,11 @@ const routes: Routes = [
   {
     path:'create-issue',component:CreateIssueComponent
   }
+  ,{path: 'all-issues', component:AllIssuesComponent},
+  {
+    path:'update-dialog/:id',component:UpdateDialogComponent
+  }
+  
 ];
 
 @NgModule({

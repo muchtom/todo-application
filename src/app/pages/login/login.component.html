@@ -44,32 +44,25 @@
             </div>
      <h2>Login to AJira</h2>
             </div>
-            <div>
-    <label for="email"><i class="fa fa-envelope"></i> Email:</label>
-        <input type="email"  class="form-control" name="email"  
-        placeholder="Enter your email adress" [(ngModel)]="user.emailId" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"   #email="ngModel"  
-        [class.is-invalid]="email.invalid && email.touched"
-        >
-        <small class="text-danger" [class.d-none]="email.valid || email.untouched">Email Id is required</small>
-        <div *ngif="email.errors && (email.invalid && email.touched)">
-            <small class="text-danger" *ngif="email.errors.required">Email is a required field</small>
-            <small class="text-danger" *ngIf="email.errors?.['pattern']">Enter the valid email</small>
-        </div>
-        </div>
-        <label for="pass"><i class="fa fa-lock"></i> Password:</label>
-        <input  type="password" class="form-control"  name="password" required placeholder="Enter your password"
-        [(ngModel)]="user.password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched" >
-        <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required field</small>
-        <button [disabled]= "loginform.form.invalid" type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
-         <div class="register">
-       <a routerLink="/register">New User? Register</a>
       
-       </div>
+            <div>
+                <label  for="username"><i class="fa fa-user-circle"></i><b>Username:</b></label>
+        <input  type="text" class="form-control"  name="username" required placeholder="Enter your Username"
+        [(ngModel)]="user.username" #username="ngModel" [class.is-invalid]="username.invalid && username.touched" >
+        <small class="text-danger" [class.d-none]="username.valid ||username.untouched">Username  is required field</small>
+        
+            </div>
+        <label for="pass"><i class="fa fa-lock"></i><b>Password:</b> </label>
+        <input  type="password" class="form-control"  name="password" required placeholder="Enter your password"
+        [(ngModel)]="user.password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched" ><br>
+        <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required field</small>
+        <button [disabled]= "loginform.form.invalid" type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+       <br>
+       <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a routerLink="/register"
+        style="color: #393f81;">Register here</a></p>
     </form>
     
-            
-    		
-    		</div>
+            </div>
 		</div>
     </div>
 </section>

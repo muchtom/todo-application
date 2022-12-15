@@ -1,0 +1,37 @@
+<h1 mat-dialog-title> Update Task Form</h1>
+<div mat-dialog-content>
+
+    
+        <div class="login-form">
+            <div class="container">
+          <form #Issueform="ngForm" (ngSubmit)='submit()'>
+           
+            <mat-form-field appearance="outline" class="container">
+              <mat-label>TASK DESCRIPTION</mat-label>
+              <input  matInput  type="text"  name="description" [(ngModel)]="issue.description"  required>
+            </mat-form-field>
+      
+          <p>
+            <mat-form-field appearance="outline" class="container">
+              <mat-label>STATUS</mat-label>
+              <mat-select  type="text" name="status"   [(ngModel)]="issue.status"  >
+                <mat-option  selected="selected" *ngFor="let status of allStatuses" >
+                  {{status}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          <p>
+            <mat-form-field appearance="outline" class="container">
+              <mat-label>ASSIGN TO</mat-label>
+              <mat-select  type="text" name="assigneeId" [(ngModel)]="issue.assigneeId"  required>
+                <mat-option  selected="selected" *ngFor="let user of AllUsers" [value]="user.id">
+                  {{user.firstname}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close </button>&nbsp;
+  <button mat-raised-button color="primary" (click)="updateToDoTask(issue.id)">UPDATE </button>
+
+</div>

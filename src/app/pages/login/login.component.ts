@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { RegistrationService } from 'src/app/registration.service';
 import { User } from 'src/app/user';
 
@@ -13,20 +14,21 @@ export class LoginComponent  implements OnInit {
   user =new User();
   msg = "";
   
-  constructor(private service:RegistrationService, private _router:Router){}
+  constructor(private service:RegistrationService, private _router:Router,
+    private notification: NzNotificationService){}
   ngOnInit() {
       
   }
 
   loginUser(){
     this.service.loginUserFromServer(this.user).subscribe(data =>{
-      console.log("response received");
-     this._router.navigate(['/admin']);
+      this.notification.success("login" ,"Succescfully")
+     this._router.navigate(['/board']);
      console.log(data);
     },
   error => {
-    console.log("Exception occured");
-    this.msg="Bad credentials, please  enter valid emailId and password";
+    this.notification.error("Bad credentials","please  enter valid username and password")
+    
 
   }
     )

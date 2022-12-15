@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, empty, Observable } from 'rxjs';
 import { Issue } from './issue';
+import { PAGEPARAMS, PageRequest } from './pagination/page-request';
+import { PageResult } from './pagination/page-results';
 import { User } from './user';
 
 @Injectable({
@@ -11,21 +13,40 @@ export class RegistrationService {
 
   constructor(private _http: HttpClient) { }
 
-  loginUserFromServer(user :User):Observable<any>{
+  public getFromUrl(url: string): Observable<any> {
+    return this._http.get("http://192.168.10.45:8083/v1/tasks?page=0&size=1&sort=string")
+      .pipe(catchError(() => empty()));
+  }
 
-    return this._http.post<any>("http://localhost:8080/login",user);
+
+  loginUserFromServer(user :User):Observable<User>{
+
+    return this._http.post<User>("http://192.168.10.45:8084/api/auth/signin",user);
 
   }
 
-  registerUserFromServer(user :User):Observable<any>{
+  registerUserFromServer(user :User):Observable<User>{
     
-    return this._http.post<any>("http://localhost:8080/registerUser",user);
+    return this._http.post<User>("http://192.168.10.45:8084/api/auth/signup",user);
+  }
+
+  getAllUsersFromServer():Observable<any>{
+    return this._http.get<any>("http://192.168.10.45:8084/api/auth/allusers")
   }
 
   createIssue(issue: Issue):Observable<any>{
-     return this._http.post<any>("http://localhost:8080/issues",issue);
+     return this._http.post<any>("http://192.168.10.45:8083/v1/tasks/create",issue);
   }
-  getAllIssues():Observable<Issue[]>{
-     return this._http.get<Issue[]>("http://localhost:8080/getAll");
+
+
+  public getPaginated(request?: PageRequest, url?: string): Observable<PageResult<any>> {
+    if (!url) url = '';
+    url += `${PAGEPARAMS(request)}`;
+    return this.getFromUrl(url);
+  }
+
+  getIssueById(id:number):Observable<Issue>{
+    return this._http.get<Issue>(`http://192.168.10.45:8083/v1/tasks/task/${id}`);
+
   }
 }

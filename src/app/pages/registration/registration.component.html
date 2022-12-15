@@ -35,9 +35,8 @@
               <div class="Scriptcontent">
               
               <!-- Stylish Login Page Start -->
-                <form #Registerform="ngForm" (ngSubmit)="registerUser()" class="codehim-form">
+<form #Registerform="ngForm" (ngSubmit)="registerUser()" class="codehim-form">
                     <small>{{msg}}</small>
-                    <!-- <small [class.text-danger]="msg ==500">{{msg}}</small> -->
         <div class="form-title">
             <div class="user-icon gr-bg">
             <i class="fa fa-user"></i>
@@ -45,52 +44,58 @@
      <h2>Register to AJira</h2>
             </div>
             <div>
-                <label  for="firstName"><i class="fa fa-user-circle"></i>Firstname</label>
-        <input  type="text" class="form-control"  name="firstName" required placeholder="Enter your name"
-        [(ngModel)]="user.firstName" #firstName="ngModel" [class.is-invalid]="firstName.invalid && firstName.touched" >
-        <small class="text-danger" [class.d-none]="firstName.valid ||firstName.untouched">FirstName  is required field</small>
+                <label  for="firstname"><i class="fa fa-user-circle"></i><b>Firstname:</b></label>
+        <input  type="text" class="form-control"  name="firstname" required placeholder="Enter your name"
+        [(ngModel)]="user.firstname" #firstname="ngModel" [class.is-invalid]="firstname.invalid && firstname.touched" >
+        <small class="text-danger" [class.d-none]="firstname.valid ||firstname.untouched">FirstName  is required field</small>
         
             </div>
 
             <div>
-                <label  for="lastName"><i class="fa fa-user-circle"></i>Lastname</label>
-        <input  type="text" class="form-control"  name="lastName" required placeholder="Enter your FirstName"
-        [(ngModel)]="user.lastName" #lastName="ngModel" [class.is-invalid]="lastName.invalid && lastName.touched" >
-        <small class="text-danger" [class.d-none]="lastName.valid ||lastName.untouched">LastName  is required field</small>
+                <label  for="lastname"><i class="fa fa-user-circle"></i><b>Lastname:</b></label>
+        <input  type="text" class="form-control"  name="lastname" required placeholder="Enter your FirstName"
+        [(ngModel)]="user.lastname" #lastname="ngModel" [class.is-invalid]="lastname.invalid && lastname.touched" >
+        <small class="text-danger" [class.d-none]="lastname.valid ||lastname.untouched">LastName  is required field</small>
+        
+            </div>
+
+            
+            <div>
+                <label  for="username"><i class="fa fa-user-circle"></i><b>Username:</b></label>
+        <input  type="text" class="form-control"  name="username" required placeholder="Enter your Username"
+        [(ngModel)]="user.username" #username="ngModel" [class.is-invalid]="username.invalid && username.touched" >
+        <small class="text-danger" [class.d-none]="username.valid ||username.untouched">Username  is required field</small>
         
             </div>
         <div>
-            <label for="email"><i class="fa fa-envelope"></i> Email:</label>
+            <label for="email"><i class="fa fa-envelope"></i> <b>Email:</b></label>
                 <input type="email"  class="form-control" name="email"  
-                placeholder="Enter your email adress" [(ngModel)]="user.emailId"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"   #email="ngModel"  
+                placeholder="Enter your email adress" [(ngModel)]="user.email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"   #email="ngModel"  
                 [class.is-invalid]="email.invalid && email.touched"
                 required>
                 <div>
-                    <!-- <small *ngIf="email.errors" class="text-danger" >Email Id is required</small> -->
-
-                    <small class="text-danger" *ngIf="email.errors?.['required']">Email is a required field</small>
+                    <!-- <small class="text-danger" *ngIf="email.errors?.['required']">Email is a required field</small> -->
                     <small class="text-danger" *ngIf="email.errors?.['pattern']">Enter the valid email</small>
                 </div>
                 </div>
                 <div>
-                    <label for="pass"><i class="fa fa-lock"></i> Password:</label>
+                    <label for="pass"><i class="fa fa-lock"></i><b>Password:</b> </label>
                     <input  type="password" class="form-control"  name="password" required placeholder="Enter your password"
                     [(ngModel)]="user.password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched" >
                     <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required field</small>
                    
                 </div>
        <div>
-           <label>Confirm Password</label>
+           <label><b>Confirm Password:</b></label>
            <input type="password" class="form-control" placeholder="Confirm password" name="cpassword" #cpassword="ngModel"
            (ngModel)="user.password" required [class.is-invalid]="cpassword.invalid && cpassword.touched"
            >
-           <small class="text-danger" [class.d-none]="(cpassword.value == password.value) || cpassword.untouched">Password and confirm password not matching</small>
+           <small class="text-danger" [class.d-none]="(cpassword.value == password.value) || cpassword.untouched">Password and confirm password not matching</small><br>
        </div>
-        <button [disabled]="Registerform.form.invalid" routerLink="/login" type="submit" (click)=" registerUser()" class="btn btn-primary btn-lg btn-block">Register</button>
-
-       <a class="float-right btextual" routerLink="/login">Existing user ? Login here</a>
-       <!-- <a routerLink="/register">New User? Register</a> -->
+        <button  [disabled]= "Registerform.form.invalid"  type="submit"  class="btn btn-primary btn-lg btn-block">Register</button><br>
     
+       <p class="mb-5 pb-lg-2" style="color: #393f81;">Existing user ? Login here <a routerLink="/login"
+        style="color: #393f81;">Register here</a></p>
     </form>
             
     		

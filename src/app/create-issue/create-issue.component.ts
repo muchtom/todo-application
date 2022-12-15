@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Issue } from '../issue';
 import { RegistrationService } from '../registration.service';
 
-// import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 
 @Component({
   selector: 'app-create-issue',
@@ -13,24 +14,36 @@ import { RegistrationService } from '../registration.service';
 export class CreateIssueComponent implements OnInit {
 
    issue:Issue = new Issue();
+  AllUsers!: any;
+  ngForm !: FormGroup;
 
-   constructor( private service:RegistrationService){}
+
+   constructor( private service:RegistrationService, private  notification : NzNotificationService, private router: Router){}
    ngOnInit() {
+    this.getAllUsers();
+    // this.submit();
+   }
+
+   onChanges(){}
+
+   submit(){
+     this.service.createIssue(this.issue).subscribe(res=>{
+      this.notification.success("Issue ","created successfully");
+      this.router.navigate(['/create-issue']);
+     }, err=>{
+      this.notification.error("error occured","when creating an issue")
+     })
+   }
+
+   getAllUsers(){
+    this.service.getAllUsersFromServer().subscribe(
+      (data)=>{
+       this.AllUsers= data
+      });
+       console.log(this.AllUsers);
+       
+      }
     
-   }
-
-   saveIssue(){
-     this.service.createIssue(this.issue).subscribe(data =>{
-       console.log(data);
-     },
-     error=>console.log(error));
-     console.log(this.issue.issueName)
-   }
-
-   onSubmit(){
-     this.saveIssue();
-   }
-   
-
-}
-
+  }
+  
+ 

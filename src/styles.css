@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Nunuto:400,700|Lato:400,800,900');
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 html,body{
     height: 100%;
     background-image: url("./assets/background.svg");
