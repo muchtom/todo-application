@@ -31,17 +31,17 @@ export class RegistrationService {
 
   loginUserFromServer(user :User):Observable<User>{
 
-    return this._http.post<User>("http://192.168.12.47:8084/api/auth/signin",user);
+    return this._http.post<User>("http://192.168.10.45:8084/api/auth/signin",user);
 
   }
 
   registerUserFromServer(user :User):Observable<User>{
     
-    return this._http.post<User>("http://192.168.12.47:8084/api/auth/signup",user);
+    return this._http.post<User>("http://192.168.10.45:8084/api/auth/signup",user);
   }
 
   getAllUsersFromServer():Observable<any>{
-    return this._http.get<any>("http://192.168.12.47:8084/api/auth/allusers/0/100")
+    return this._http.get<any>("http://192.168.10.45:8084/api/auth/allusers/0/100")
   }
 
   createIssue(issue: Issue):Observable<any>{

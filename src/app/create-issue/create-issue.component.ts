@@ -29,7 +29,7 @@ export class CreateIssueComponent implements OnInit {
    submit(){
      this.service.createIssue(this.issue).subscribe(res=>{
       this.notification.success("Issue ","created successfully");
-      this.router.navigate(['/create-issue']);
+      this.router.navigate(['/board']);
      }, err=>{
       this.notification.error("error occured","when creating an issue")
      })
@@ -38,7 +38,7 @@ export class CreateIssueComponent implements OnInit {
    getAllUsers(){
     this.service.getAllUsersFromServer().subscribe(
       (data)=>{
-       this.AllUsers= data
+       this.AllUsers= data.content
       });
       
        

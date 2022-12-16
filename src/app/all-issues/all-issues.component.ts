@@ -20,7 +20,7 @@ export class AllIssuesComponent implements OnInit{
     userdetails!:any;
 
   ngOnInit(): void {
-    // this.getAllUsers();
+  
   
     this.id= this.route.snapshot.params['id'];
     this.issue= new Issue();

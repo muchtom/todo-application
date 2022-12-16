@@ -44,10 +44,10 @@ export class AdminComponent implements OnInit {
   getAllUsers(){
     this._service.getAllUsersFromServer().subscribe(
       (data)=>{
-        return this.datasource = new MatTableDataSource(data);
-         this.datasource.paginator= this.paginator
-      }
-    )
-  }
+       this.allUsers= data.content
+       console.log(this.allUsers);
+       
+      });
+    }
 
 }
