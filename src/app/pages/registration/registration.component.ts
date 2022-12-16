@@ -24,18 +24,17 @@ export class RegistrationComponent implements OnInit {
 
   registerUser(){
     this._service.registerUserFromServer(this.user).subscribe(data =>{
-      this.notification.success("Registered Succescfully" ,"")
-     this._router.navigate(['/login']);
-     console.log(data);
+      
     },
-  error => {
-    this.notification.error("Bad credentials or username already exist","")
-    
-
-  }
-    )
-    
-  }
+  message => {
+    this.notification.success("Registered Succescfully" ,"")
+     this._router.navigate(['/login']);
+  },
+    ),(err: any)=>{
+      this.notification.error("failed registration " ,"")
+    } 
+   }
+  
 
   
 
