@@ -46,7 +46,7 @@
                 cdkDropList
           
                 (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of allIssuesInProgress" cdkDrag   (click)="goToIssueDetails(item.id)" style="cursor: pointer;">
+                    <div class="task" *ngFor="let item of allIssuesInProgress" cdkDrag   style="cursor: pointer;">
                        {{item.description}}
                        <div class="box">
                         <button mat-icon-button color="primary" (click)="goToIssueDetails(item.id)" ><mat-icon>visibility</mat-icon></button>
@@ -65,7 +65,7 @@
                 #todoList="cdkDropList"
                 [cdkDropListData]="allissuesDone"
                 (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of allissuesDone" cdkDrag (click)="goToIssueDetails(item.id)" style="cursor: pointer;" >
+                    <div class="task" *ngFor="let item of allissuesDone" cdkDrag style="cursor: pointer;" >
                        {{item.description}}
                        <div class="box">
                         <button mat-icon-button color="primary" (click)="goToIssueDetails(item.id)" ><mat-icon>visibility</mat-icon></button>
