@@ -85,7 +85,7 @@ export class MainViewComponent implements OnInit {
   deleteIssue(id:number){
     this.service.deleteIssueById(id).subscribe(data =>{
       console.log(data);
-      this.router.navigate(['/create-issue']);
+      // this.router.navigate(['/create-issue']);
 
     })
 
