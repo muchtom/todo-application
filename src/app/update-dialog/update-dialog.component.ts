@@ -47,6 +47,7 @@ export class UpdateDialogComponent  implements OnInit{
     //  this.getAllUsers();
     this.service.updateIssue(this.issue, this.id).subscribe(data =>{
       console.log(data);
+      this.router.navigate(['/board']);
     })
     // this.service.updateIssue(this.id).subscribe(res=>{
     //  this.notification.success("Issue ","updated successfully");

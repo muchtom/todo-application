@@ -6,9 +6,13 @@
         <b> WELCOME TO THE TASK BOARD</b>
          </span>
         <span class="example-spacer"></span>
-        <button  routerLink="/login"  mat-raised-button color="primary">
-        LOGOUT
-        </button>
+        
+        <button  routerLink="/admin"  mat-raised-button color="primary">
+            ADMIN
+            </button>&nbsp;
+            <button  routerLink="/login"  mat-raised-button color="primary">
+                LOGOUT
+                </button>
       </mat-toolbar>
          
 
@@ -29,7 +33,7 @@
                        <div class="box">
                         <button mat-icon-button color="primary" (click)="goToupdateIssue(item.id)" ><mat-icon>edit</mat-icon></button>
                         <button mat-icon-button color="warn" (click)="deleteIssue(item.id)" ><mat-icon>delete</mat-icon></button>
-                        <!-- <button mat-mini-fab color="primary" ><mat-icon>{{issue}}</mat-icon></button> -->
+                        <button mat-mini-fab color="primary" ><mat-icon></mat-icon></button>
                       </div>
                     </div>
                 </div>
@@ -45,7 +49,7 @@
                     <div class="task" *ngFor="let item of allIssuesInProgress" cdkDrag>
                        {{item.description}}
                        <div class="box">
-                        <button mat-icon-button color="primary" ><mat-icon>edit</mat-icon></button>
+                        <button mat-icon-button color="primary" (click)="goToupdateIssue(item.id)" ><mat-icon>edit</mat-icon></button>
                         <button mat-icon-button color="warn" (click)="deleteIssue(item.id)" ><mat-icon>delete</mat-icon></button>
                       </div>
                     </div>
@@ -64,7 +68,7 @@
                        {{item.description}}
                        <div class="box">
                         <button mat-icon-button color="primary" ><mat-icon>check_circle</mat-icon></button>
-                        <button mat-icon-button color="warn" ><mat-icon>delete</mat-icon></button>
+                        <button mat-icon-button color="warn" (click)="deleteIssue(item.id)"  ><mat-icon>delete</mat-icon></button>
                       </div>
                     </div>
                 </div>

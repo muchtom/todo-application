@@ -64,7 +64,7 @@
                 <label  for="username"><i class="fa fa-user-circle"></i><b>Username:</b></label>
         <input  type="text" class="form-control"  name="username" required placeholder="Enter your Username"
         [(ngModel)]="user.username" #username="ngModel" [class.is-invalid]="username.invalid && username.touched" >
-        <small class="text-danger" [class.d-none]="username.valid ||username.untouched">Username  is required field</small>
+        <small class="text-danger" [class.d-none]="username.valid || username.untouched">Username  is required field</small>
         
             </div>
         <div>

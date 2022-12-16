@@ -14,8 +14,8 @@
           <p>
             <mat-form-field appearance="outline" class="container">
               <mat-label>STATUS</mat-label>
-              <mat-select  type="text" name="status" [value]="issue.status"   [(ngModel)]="issue.status"  required>
-                <mat-option [value]="issue.status" *ngFor="let state of allStatuses" >
+              <mat-select  type="text" name="status" [(ngModel)]="issue.status"  required>
+                <mat-option [value]="state" *ngFor="let state of allStatuses" >
                   {{state}}
                 </mat-option>
               </mat-select>
@@ -31,8 +31,9 @@
             </mat-form-field>
         
 <div mat-dialog-action [align]="'end'">
-  <button mat-raised-button color="warn" mat-dialog-close>Close </button>&nbsp;
-  <button mat-raised-button color="primary">UPDATE </button>
+  <button mat-raised-button color="warn" mat-dialog-close routerLink="/board">Close </button>&nbsp;
+  <button mat-raised-button color="primary" >UPDATE </button>
+ 
 
 </div>
 
