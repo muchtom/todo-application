@@ -69,7 +69,7 @@ this._http.get("http://192.168.10.45:8083/v1/tasks/statuses").subscribe(res=>{
   getAllUsers(){
     this.service.getAllUsersFromServer().subscribe(
       (data)=>{
-       this.AllUsers= data
+       this.AllUsers= data.content
       });
     
        

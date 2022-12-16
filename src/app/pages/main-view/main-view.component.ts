@@ -21,6 +21,8 @@ export class MainViewComponent implements OnInit {
   allissuesDone!: any;
   page!: number;
   id!: any;
+  AllUsers!: any;
+  issue! :Issue;
 
   constructor(private service:RegistrationService, private notification: NzNotificationService,
     private _http: HttpClient,
@@ -31,6 +33,7 @@ export class MainViewComponent implements OnInit {
      this.load();
      this.getAlltasksProgress(); 
      this.getAlltasksDone();
+     this.getAllUsers();
   }
 
  
@@ -87,5 +90,17 @@ export class MainViewComponent implements OnInit {
     })
 
   }
+  goToIssueDetails(id: number){
+ this.router.navigate(['/issue-details',id])
+  }
 
+
+  getAllUsers(){
+    this.service.getAllUsersFromServer().subscribe(
+      (data)=>{
+       this.AllUsers= data
+      });
+      
+       
+      }
 }

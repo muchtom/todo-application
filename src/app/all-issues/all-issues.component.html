@@ -1,1 +1,42 @@
-<p>all-issues works!</p>
+
+
+<div id="form">
+
+<div class="fish" id="fish"></div>
+ <div class="fish" id="fish2"></div>
+ <div class="info"><br><br>
+<h2><b>Task Details</b></h2>
+    <div class="row">
+
+        <div class="col-lg-6">
+        <h3>Issue Description :</h3>
+        </div>
+        <div class="col-lg-4">
+          <h3> {{issue.description}}</h3> 
+        </div>
+    </div>
+      <div class="row">
+        <div class="col-lg-6">
+           <h3>Assigned To:</h3> 
+        </div>
+        <div class="col-lg-4"  >
+           <h3>{{userdetails.username}} </h3>  
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+           <h3> Status</h3>
+        </div>
+        <div class="col-lg-4">
+           <h3>{{issue.status |lowercase}}  </h3> 
+        </div>
+      </div>
+ </div>
+
+<div class="backToMenu" style="padding-left: 570px; padding-top: 30px;">
+<button mat-raised-button color="primary" (click)="goToBoard()"  > GO TO BOARD  </button>
+ </div>
+ </div>
+
+

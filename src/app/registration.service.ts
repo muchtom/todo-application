@@ -31,7 +31,7 @@ export class RegistrationService {
 
   loginUserFromServer(user :User):Observable<User>{
 
-    return this._http.post<User>("http://192.168.10.45:8084/api/auth/signin",user);
+    return this._http.post<User>("http://192.168.12.135:8084/api/auth/signin",user);
 
   }
 
@@ -41,7 +41,7 @@ export class RegistrationService {
   }
 
   getAllUsersFromServer():Observable<any>{
-    return this._http.get<any>("http://192.168.10.45:8084/api/auth/allusers")
+    return this._http.get<any>("http://192.168.10.45:8084/api/auth/allusers/0/100")
   }
 
   createIssue(issue: Issue):Observable<any>{

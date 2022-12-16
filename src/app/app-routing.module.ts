@@ -28,7 +28,7 @@ const routes: Routes = [
   {
     path:'create-issue',component:CreateIssueComponent
   }
-  ,{path: 'all-issues', component:AllIssuesComponent},
+  ,{path: 'issue-details/:id', component:AllIssuesComponent},
   {
     path:'update-dialog/:id',component:UpdateDialogComponent
   }

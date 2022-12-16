@@ -28,12 +28,12 @@
                 #todoList="cdkDropList"
              
                 (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of allIssues" cdkDrag>
-                       {{item.description}}
+                    <div class="task" *ngFor="let item of allIssues" cdkDrag  (click)="goToIssueDetails(item.id)" style="cursor: pointer;">
+                       {{item.description}} 
                        <div class="box">
                         <button mat-icon-button color="primary" (click)="goToupdateIssue(item.id)" ><mat-icon>edit</mat-icon></button>
                         <button mat-icon-button color="warn" (click)="deleteIssue(item.id)" ><mat-icon>delete</mat-icon></button>
-                        <button mat-mini-fab color="primary" ><mat-icon></mat-icon></button>
+                        <button mat-mini-fab color="primary" ><mat-icon>{{item.description}}</mat-icon></button>
                       </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 cdkDropList
           
                 (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of allIssuesInProgress" cdkDrag>
+                    <div class="task" *ngFor="let item of allIssuesInProgress" cdkDrag   (click)="goToIssueDetails(item.id)" style="cursor: pointer;">
                        {{item.description}}
                        <div class="box">
                         <button mat-icon-button color="primary" (click)="goToupdateIssue(item.id)" ><mat-icon>edit</mat-icon></button>
@@ -64,7 +64,7 @@
                 #todoList="cdkDropList"
                 [cdkDropListData]="allissuesDone"
                 (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of allissuesDone" cdkDrag>
+                    <div class="task" *ngFor="let item of allissuesDone" cdkDrag (click)="goToIssueDetails(item.id)" style="cursor: pointer;" >
                        {{item.description}}
                        <div class="box">
                         <button mat-icon-button color="primary" ><mat-icon>check_circle</mat-icon></button>

@@ -65,7 +65,7 @@
                     <mat-label>ASSIGN TO</mat-label>
                     <mat-select  type="text" name="assigneeId" [(ngModel)]="issue.assigneeId"  required>
                       <mat-option *ngFor="let user of AllUsers" [value]="user.id">
-                        {{user.firstname}}
+                        {{user.username}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
